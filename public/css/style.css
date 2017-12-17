@@ -1,0 +1,21 @@
+div{
+	margin-bottom:10px;
+}
+			
+span{
+	color:#007dcc;
+}
+
+span.bold{
+	font-weight:bold;
+	font-size:28px;
+}
+
+span.thin{
+	font-size:20px;
+	}
+	
+input[type="number"] {
+	width: 150px;
+}
+		

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset = "utf-8">
+	<title> Регистрация студентов </title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<form action = "/index.php" method = "post"> 
+		
+		<div>
+			<span class = "bold">First Name</span>
+			<br>
+			<input type = "text"  name= "FirstName" placeholder = "Ivan"  maxlength ="20" 
+>
+		</div>
+		
+		<div>
+			<span class = "bold">Last Name</span>
+			<br>
+			<input type = "text"  name= "LastName" placeholder ="Ivanov"  maxlength ="20"	>
+		</div>
+		
+		<div>
+			<span class = "bold">Group id</span>
+			<br>
+			<input type = "text" name = "groupId"  maxlength ="20">
+		</div>
+		
+		<div>
+			<span class ="bold">Sum of points</span>
+			<br>
+			<input type = "number" name ="points" min="150" max ="300" placeholder ="150"
+			>
+		</div>
+		
+		<div>
+			<span class = "bold">E-mail</span>
+			<br>
+			<input type = "email" name= "email" placeholder ="example@example.com" >
+		</div>
+		
+		<div>
+			<span class = "bold">Sex</span>
+			<br>
+			<span class = "thin">Male</span>
+			<input type = "radio"   name ="sex" value = "Male" >
+			<br>
+			<span class = "thin">Female</span>
+			<input type = "radio"   name ="sex" value = "Female" >
+		</div>
+		
+		<div>
+		<span class ="bold">Registration </span>
+		<br>
+		<span class = "thin">Resident
+		<input type = "radio"   name ="registration" value = "resident" >
+		<br>
+		Nonresident</span>
+		<input type = "radio"   name ="registration" value = "nonresident" >
+		</div>
+		<input type = "submit">
+	</form>
+</body>
