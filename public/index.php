@@ -1,17 +1,24 @@
 <?php
 require('../setting.php');
 require('./templates/template-1.html');
+
+if($_COOKIE){
+	header("Location:/list.php");
+}
+
 function query($pdo){
-	//get name and other infromation about studen as variables
 	
-	$FN = $_POST['FirstName'];
-	$LN = $_POST['LastName'];
-	$SOP = $_POST['points']; 
-	$query =$pdo->query("INSERT INTO a VALUES('$FN','$LN')");
+	$query =$pdo->prepare("INSERT INTO student VALUES(:FN,:LN,:GI,:POINTS,:EMAIL,:SEX,:REGISTRATION)");
+	$query->bindValue(':FN',$_POST['FirstName']);
+	$query->bindValue(':LN',$_POST['LastName']);
+	$query->bindValue(':GI',$_POST['groupId']);
+	$query->bindValue(':POINTS',$_POST['points']);
+	$query->bindValue(':EMAIL',$_POST['email']);
+	$query->bindValue(':SEX', $_POST['sex']);
+	$query->bindValue(':REGISTRATION',$_POST['resident']);
 	
-	$names = [$FN,$LN,$SOP];
+	$query->execute();
 	
-	return $names;
 }
 
 if(!empty ($_POST)){
@@ -21,10 +28,10 @@ if(!empty ($_POST)){
 			$error = true;
 		}
 	} if(!($error)){
-		//get the array containing info about a student
-		$name = query($pdo);
+		
+		query($pdo);
 	
-		$string = implode($name);
+		$string = $_POST['FirstName'].$_POST['LastName'].$_POST['points'];
 		setcookie("student",$string, time() +11);
 		$_POST = array();
 		header("Location:/list.php");	
