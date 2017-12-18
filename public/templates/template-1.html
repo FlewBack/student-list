@@ -7,44 +7,46 @@
 
 <body>
 	<form action = "/index.php" method = "post"> 
-		
+		<input type="hidden" name="sex">
+		<input type="hidden" name="registration">
+
 		<div>
 			<span class = "bold">First Name</span>
 			<br>
-			<input type = "text"  name= "FirstName" placeholder = "Ivan"  maxlength ="20" 
+			<input type = "text"  name= "FirstName" placeholder = "Ivan"  maxlength ="20" value=a 
 >
 		</div>
 		
 		<div>
 			<span class = "bold">Last Name</span>
 			<br>
-			<input type = "text"  name= "LastName" placeholder ="Ivanov"  maxlength ="20"	>
+			<input type = "text"  name= "LastName" placeholder ="Ivanov"  maxlength ="20" value=b	>
 		</div>
 		
 		<div>
 			<span class = "bold">Group id</span>
 			<br>
-			<input type = "text" name = "groupId"  maxlength ="20">
+			<input type = "text" name = "groupId"  maxlength ="20" value=c>
 		</div>
 		
 		<div>
 			<span class ="bold">Sum of points</span>
 			<br>
-			<input type = "number" name ="points" min="150" max ="300" placeholder ="150"
+			<input type = "number" name ="points" min="150" max ="300" placeholder ="150" value=151
 			>
 		</div>
 		
 		<div>
 			<span class = "bold">E-mail</span>
 			<br>
-			<input type = "email" name= "email" placeholder ="example@example.com" >
+			<input type = "email" name= "email" placeholder ="example@example.com" value=A@a>
 		</div>
 		
 		<div>
 			<span class = "bold">Sex</span>
 			<br>
 			<span class = "thin">Male</span>
-			<input type = "radio"   name ="sex" value = "Male" >
+			<input type = "radio"   name ="sex" value = "Male">
 			<br>
 			<span class = "thin">Female</span>
 			<input type = "radio"   name ="sex" value = "Female" >

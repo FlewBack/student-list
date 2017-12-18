@@ -1,40 +1,34 @@
 <?php
-
-$values = array();
-$errors = array();
 require('../setting.php');
 require('./templates/template-1.html');
-
-function test($pdo){
+function query($pdo){
+	//get name and other infromation about studen as variables
+	
 	$FN = $_POST['FirstName'];
 	$LN = $_POST['LastName'];
+	$SOP = $_POST['points']; 
+	$query =$pdo->query("INSERT INTO a VALUES('$FN','$LN')");
 	
-	$query = $pdo->query("INSERT INTO a VALUES('$FN','$LN')");
+	$names = [$FN,$LN,$SOP];
 	
-	echo $FN;
+	return $names;
 }
-if($_POST){
-	$values = $_POST;
-	foreach($values as $key =>$value){
-		if(empty($value)){
-			$errors[] = $value;
+
+if(!empty ($_POST)){
+	
+	foreach($_POST as $key=>$var){
+		if(empty($var) || !(isset($var))){
+			$error = true;
 		}
-	}
-	if (!$errors){
-		var_dump($_POST);
-		test($pdo);
+	} if(!($error)){
+		//get the array containing info about a student
+		$name = query($pdo);
+	
+		$string = implode($name);
+		setcookie("student",$string, time() +11);
+		$_POST = array();
+		header("Location:/list.php");	
+	
 	}
 }
-
-/*
-function test(){
-	$FN = $_POST['FirstName'];
-	$query = $pdo->query("INSERT INTO a values('$FN')");
-	echo $FN;
-}
-
-
-// requre settings and the template
-
-
-$obj  = new student();*/
+// здесь где-то ошибка с ифами так как перенаправляет на страницу лист и заносит пстую инфу в бд
