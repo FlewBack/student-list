@@ -17,4 +17,17 @@ Class Service
 		$string = $_POST['FirstName'].$_POST['LastName'].$_POST['points'];
 		setcookie("student",$string, time() + 100);
 	}
+	
+	public function showTable($pdo)
+	{
+		$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points limit 20");
+		$query->execute();
+		
+		return $query->fetchAll();
+		
+	}
+	
+	
+	
+	
 }

@@ -1,14 +1,19 @@
-<!DOCTYPE HTML>
 <head>
-	<meta charset = "utf-8">
-	<title> Settings </title>
-	<link href="./css/style.css" rel="stylesheet">
+<link href="./css/style.css" rel="stylesheet">
 </head>
-
+<pre>
 <body>
+<form action ="list.php">
+Имя       Фамилия               Номер группы     Баллов  <button name="button" value="<?php echo $value; ?>"><?php echo $char?></button>
+-----------------------------------------------------------
+<?php foreach ($students as $student) :?>
+<?php padRight($student['FirstName'], 12) ; ?>
+<?php padRight($student['LastName'], 25); ?>
+<?php padRight($student['groupId'], 15 ); ?>
+<?php padRight($student['points'], 0); ?>
+<?php echo "\n"; ?>
+<?php endforeach; ?>
 
-
-
-
-
-<body>
+-----------------------------------------------------------
+</form>
+</body>

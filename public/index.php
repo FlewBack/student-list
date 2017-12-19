@@ -3,9 +3,9 @@ require('../setting.php');
 require('./templates/template-1.html');
 
 $service = new Service;
-/*if($_COOKIE){
+if($_COOKIE){
 	header("Location:/list.php");
-}*/
+}
 
 
 
@@ -17,11 +17,12 @@ if(!empty ($_POST)){
 		}
 	} if(!($error)){
 		
+		// Add a new student and set cookie
 		$service->addStudent($pdo);
-	
 		$service->setCookie();
+		
 		$_POST = array();
-		//header("Location:/list.php");	
+		header("Location:/list.php");	
 	
 	}
 }
