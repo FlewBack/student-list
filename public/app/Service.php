@@ -18,15 +18,42 @@ Class Service
 		setcookie("student",$string, time() + 100);
 	}
 	
-	public function showTable($pdo)
-	{
-		$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points limit 20");
-		$query->execute();
+	public function showTable($pdo,$paremetr)
+	{	
+		if($paremetr == "desc"){
+			$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points limit 20");
+			$query->execute();
 		
-		return $query->fetchAll();
+			return $query->fetchAll();
+		}
+		
+		elseif ($paremetr == "ask"){
+			$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points DESC limit 20");
+			$query->execute();
+			
+			return $query->fetchAll();	
+		}
+	}
+	
+	public function html($text,$number){
+		$html = htmlspecialchars($this-> padRight($text, $number));
+		
+		return $html;
 		
 	}
 	
+	
+	
+	private function  padRight($text,$number){	
+	$textLen = mb_strlen($text);
+	$space ="";
+	for (;$textLen < $number; $textLen++){
+		$space .= " ";
+	}
+	
+	return "$text$space";
+	
+	}
 	
 	
 	

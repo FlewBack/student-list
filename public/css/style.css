@@ -15,6 +15,10 @@ span.thin{
 	font-size:20px;
 	}
 	
+span.boldTable{
+	font-size: 24px;
+}
+	
 input[type="number"] {
 	width: 150px;
 }

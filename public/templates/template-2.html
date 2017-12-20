@@ -1,19 +1,24 @@
+<!DOCTYPE HTML>
 <head>
 <link href="./css/style.css" rel="stylesheet">
+<meta charset = "utf-8">
 </head>
-<pre>
 <body>
+<span class = "bold">
+<pre>
 <form action ="list.php">
-Имя       Фамилия               Номер группы     Баллов  <button name="button" value="<?php echo $value; ?>"><?php echo $char?></button>
+Имя         Фамилия             Номер группы     Баллов  <button name="button" value="<?php echo $value; ?>"><?php echo $char?></button>
 -----------------------------------------------------------
 <?php foreach ($students as $student) :?>
-<?php padRight($student['FirstName'], 12) ; ?>
-<?php padRight($student['LastName'], 25); ?>
-<?php padRight($student['groupId'], 15 ); ?>
-<?php padRight($student['points'], 0); ?>
+<?php echo $service->html($student['FirstName'], 12) ; ?>
+<?php echo $service->html($student['LastName'], 24); ?>
+<?php echo $service->html($student['groupId'], 15 ); ?>
+<?php echo $service->html($student['points'], 0); ?>
 <?php echo "\n"; ?>
 <?php endforeach; ?>
 
 -----------------------------------------------------------
 </form>
+</pre>
+</span>
 </body>
