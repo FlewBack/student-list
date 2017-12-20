@@ -20,14 +20,14 @@ Class Service
 	
 	public function showTable($pdo,$paremetr)
 	{	
-		if($paremetr == "desc"){
+		if($paremetr == "ask"){
 			$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points limit 20");
 			$query->execute();
 		
 			return $query->fetchAll();
 		}
 		
-		elseif ($paremetr == "ask"){
+		elseif ($paremetr == "desc"){
 			$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points DESC limit 20");
 			$query->execute();
 			
