@@ -11,54 +11,52 @@
 		<input type="hidden" name="registration">
 
 		<div>
-			<span class = "bold">First Name</span>
+			<span class = "bold">Имя</span>
 			<br>
-			<input type = "text"  name= "FirstName" placeholder = "Ivan"  maxlength ="20" value=a 
->
+			<input type = "text"  name= "FirstName" placeholder = "Иван"  maxlength ="20" required> 
 		</div>
 		
 		<div>
-			<span class = "bold">Last Name</span>
+			<span class = "bold">Фамилия</span>
 			<br>
-			<input type = "text"  name= "LastName" placeholder ="Ivanov"  maxlength ="20" value=b	>
+			<input type = "text"  name= "LastName" placeholder ="Иванов"  maxlength ="20" required>
 		</div>
 		
 		<div>
-			<span class = "bold">Group id</span>
+			<span class = "bold">Номер группы</span>
 			<br>
-			<input type = "text" name = "groupId"  maxlength ="20" value=c>
+			<input type = "text" name = "groupId"  maxlength ="20" required>
 		</div>
 		
 		<div>
-			<span class ="bold">Sum of points</span>
+			<span class ="bold">Сумма баллов</span>
 			<br>
-			<input type = "number" name ="points" min="150" max ="300" placeholder ="150" value=151
-			>
+			<input type = "number" name ="points" min="150" max ="300" placeholder ="От 150 до 300" required>
 		</div>
 		
 		<div>
-			<span class = "bold">E-mail</span>
+			<span class = "bold">Электронная почта</span>
 			<br>
-			<input type = "email" name= "email" placeholder ="example@example.com" value=A@a>
+			<input type = "email" name= "email" placeholder ="example@example.com" required>
 		</div>
 		
 		<div>
-			<span class = "bold">Sex</span>
+			<span class = "bold">Пол</span>
 			<br>
-			<span class = "thin">Male</span>
-			<input type = "radio"   name ="sex" value = "Male">
+			<span class = "thin">Мужской</span>
+			<input type = "radio"   name ="sex" value = "Male" checked>
 			<br>
-			<span class = "thin">Female</span>
+			<span class = "thin">Женский</span>
 			<input type = "radio"   name ="sex" value = "Female" >
 		</div>
 		
 		<div>
-		<span class ="bold">Registration </span>
+		<span class ="bold">Регистрация </span>
 		<br>
-		<span class = "thin">Resident
-		<input type = "radio"   name ="registration" value = "resident" >
+		<span class = "thin">Местный
+		<input type = "radio"   name ="registration" value = "resident" checked>
 		<br>
-		Nonresident</span>
+		Иногородний</span>
 		<input type = "radio"   name ="registration" value = "nonresident" >
 		</div>
 		<input type = "submit">

@@ -1,6 +1,9 @@
 <?php
 Class Service
 {
+ // Регистрация
+	
+	// Добавить студента в БД
 	public function addStudent($pdo){
 		$query =$pdo->prepare("INSERT INTO student VALUES(:FN,:LN,:GI,:POINTS,:EMAIL,:SEX,:REGISTRATION)");
 		$query->bindValue(':FN',$_POST['FirstName']);
@@ -12,14 +15,17 @@ Class Service
 		$query->bindValue(':REGISTRATION',$_POST['registration']);
 		$query->execute();
 	}
-
+	
+	// Установить куки
 	public function setCookie(){
-		$string = $_POST['FirstName'].$_POST['LastName'].$_POST['points'];
-		setcookie("student",$string, time() + 100);
+		$string = $_POST['email'];
+		setcookie("student",$string, time() + (60*60*24*365*50) );
 	}
 	
-	public function showTable($pdo,$paremetr)
-	{	
+ // Список
+ 
+	// Вывести таблицу из студентов с выбранной сортировкой
+	public function showTable($pdo,$paremetr){	
 		if($paremetr == "ask"){
 			$query = $pdo->prepare("SELECT FirstName,LastName,groupId, points FROM student ORDER BY points limit 20");
 			$query->execute();
@@ -35,6 +41,16 @@ Class Service
 		}
 	}
 	
+	// Вывести таблицу из студентов по поиску имени/фамилии
+	public function showQueryTable($pdo,$search){
+		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student WHERE FirstName = :NAMEONE OR LastName = :NAMETWO limit 20");
+		$query->bindValue(':NAMEONE', $search);
+		$query->bindValue(':NAMETWO', $search);
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+	// Экранизирует вывод
 	public function html($text,$number){
 		$html = htmlspecialchars($this-> padRight($text, $number));
 		
@@ -42,8 +58,26 @@ Class Service
 		
 	}
 	
+ // Настройки
+	
+	// Изменить информацию о студенте
+	public function changeInfo($pdo){
+		$query = $pdo->prepare("UPDATE student SET FirstName = :FN, LastName = :LN, groupId = :GI, points = :PO, sex = :SEX, registration = :REG where email = :EM");
+		$query->bindValue(':FN',$_POST['FirstName']);
+		$query->bindValue(':LN',$_POST['LastName']);
+		$query->bindValue(':GI',$_POST['groupId']);
+		$query->bindValue(':PO',$_POST['points']);
+		$query->bindValue(':SEX',$_POST['sex']);
+		$query->bindValue(':REG',$_POST['registration']);
+		$query->bindValue(':EM',$_COOKIE['student']);
+		
+		$query->execute();
+	}
 	
 	
+ // Приватные методы
+ 
+	// Создает пространство для правильного вывода
 	private function  padRight($text,$number){	
 	$textLen = mb_strlen($text);
 	$space ="";

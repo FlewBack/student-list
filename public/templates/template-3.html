@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset = "utf-8">
+	<title> Настройки пользователя </title>
+	<link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+	<a href="list.php"><span class = "bold"> Список студентов </span></a>
+	<form action ="setting.php" method ="post">
+		<span class = "bold"> Ваша почта: <?php echo $email; ?> </span>
+		<hr>
+		<span class ="bold">Изменить свои данные:</span>
+		<br>
+		<br>
+		<div>
+			<span class = "bold">Новое имя </span>
+			<br>
+			<input type = "text"  name= "FirstName" placeholder = "Петр"  maxlength ="20" required >
+		</div>
+
+		<div>
+			<span class = "bold">Новая фамилия </span>
+			<br>
+			<input type = "text"  name= "LastName" placeholder ="Петров"  maxlength ="20" required>
+		</div>
+
+		<div>
+			<span class = "bold">Новый номер группы</span>
+			<br>
+			<input type = "text" name = "groupId"  maxlength ="20" required>
+		</div>
+
+		<div>
+			<span class = "bold">Новая сумма баллов </span>
+			<br>
+			<input type = "number" name ="points" min="150" max ="300" placeholder ="От 150 до 300 баллов" required>
+		</div>
+
+		<div>
+			<span class = "bold">Пол</span>
+			<br>
+			<span class = "thin">Мужской</span>
+			<input type = "radio"   name ="sex" value = "Male" checked>
+			<br>
+			<span class = "thin">Женский</span>
+			<input type = "radio"   name ="sex" value = "Female" >
+		</div>
+		
+		<div>
+			<span class ="bold">Регистрация </span>
+			<br>
+			<span class = "thin">Местный
+			<input type = "radio"   name ="registration" value = "resident" checked >
+			<br>
+			Иногородний</span>
+			<input type = "radio"   name ="registration" value = "nonresident" >
+		</div>
+		<input type = "submit">	
+</form>
+
+</body>

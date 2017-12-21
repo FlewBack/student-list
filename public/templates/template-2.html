@@ -4,10 +4,11 @@
 <meta charset = "utf-8">
 </head>
 <body>
-<span class = "bold">
+<span class = "bold"><form action ="list.php">
 <pre>
+Поиск:<input name="search"> <button> Найти </button> </form>		<a href="setting.php">Настройки пользователя</a>
 <form action ="list.php">
-Список абитуриентов             Поиск: <input name="search">      <input type = "submit">
+Список абитуриентов: 
 Имя         Фамилия             Номер группы     Баллов  <button name="button" value="<?php echo $value; ?>"><?php echo $char?></button>
 -----------------------------------------------------------
 <?php foreach ($students as $student) :?>
@@ -17,6 +18,7 @@
 <?php echo $service->html($student['points'], 0); ?>
 <?php echo "\n"; ?>
 <?php endforeach; ?>
+
 
 -----------------------------------------------------------
 </form>
