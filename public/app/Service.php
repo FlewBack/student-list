@@ -43,7 +43,11 @@ Class Service
 	
 	// Вывести таблицу из студентов по поиску имени/фамилии
 	public function showQueryTable($pdo,$search){
-		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student WHERE FirstName = :NAMEONE OR LastName = :NAMETWO limit 20");
+		// обрабатывает поиск
+		$search = $this->AddQueryForm($search);
+		
+		//подготоваливаем и возвращаем запрос
+		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student WHERE FirstName LIKE :NAMEONE OR LastName LIKE :NAMETWO limit 20");
 		$query->bindValue(':NAMEONE', $search);
 		$query->bindValue(':NAMETWO', $search);
 		$query->execute();
@@ -59,6 +63,15 @@ Class Service
 	}
 	
  // Настройки
+ 
+	// Выводит данные о студенте в форму.
+	public function loadInfo($pdo,$cookie){
+		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student where email = :EM");
+		$query->bindValue(':EM', $cookie);
+		$query->execute();
+		return $query->fetchAll();
+		
+	}
 	
 	// Изменить информацию о студенте
 	public function changeInfo($pdo){
@@ -75,6 +88,7 @@ Class Service
 	}
 	
 	
+	
  // Приватные методы
  
 	// Создает пространство для правильного вывода
@@ -89,6 +103,14 @@ Class Service
 	
 	}
 	
+	// Добавляет спец символы для запроса
+	private function AddQueryForm($search){
+		if(!empty($search)){
+			$search = "%" . $search . "%";
+		}
+		return $search;
+		
+	}
 	
 	
 }

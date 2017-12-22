@@ -8,7 +8,7 @@ require('./templates/template-1.html');
 $service = new Service;
 
 // Если куки существует перенаправлять со страницы авторизации на страницу со списком
-if($_COOKIE){
+if($_COOKIE['student']){
 	header("Location:/list.php");
 }
 

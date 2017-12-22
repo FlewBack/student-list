@@ -31,6 +31,9 @@ if(!empty ($_POST)){
 	}
 }
 
+$array = $service->loadInfo($pdo, $_COOKIE['student']);
+
+
 // Загрузка шаблона
 require('./templates/template-3.html');
 

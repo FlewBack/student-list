@@ -15,25 +15,25 @@
 		<div>
 			<span class = "bold">Новое имя </span>
 			<br>
-			<input type = "text"  name= "FirstName" placeholder = "Петр"  maxlength ="20" required >
+			<input type = "text"  name= "FirstName" placeholder = "Петр"  maxlength ="20" value = "<?php echo $array[0]['FirstName']; ?>" required >
 		</div>
 
 		<div>
 			<span class = "bold">Новая фамилия </span>
 			<br>
-			<input type = "text"  name= "LastName" placeholder ="Петров"  maxlength ="20" required>
+			<input type = "text"  name= "LastName" placeholder ="Петров"  maxlength ="20" value ="<?php echo $array[0]['LastName'];?>" required>
 		</div>
 
 		<div>
 			<span class = "bold">Новый номер группы</span>
 			<br>
-			<input type = "text" name = "groupId"  maxlength ="20" required>
+			<input type = "text" name = "groupId"  maxlength ="20" value = "<?php echo $array[0]['groupId']?>" required>
 		</div>
 
 		<div>
 			<span class = "bold">Новая сумма баллов </span>
 			<br>
-			<input type = "number" name ="points" min="150" max ="300" placeholder ="От 150 до 300 баллов" required>
+			<input type = "number" name ="points" min="150" max ="300" placeholder ="От 150 до 300 баллов" value = "<?php echo $array[0]['points'];?>" required>
 		</div>
 
 		<div>
@@ -43,7 +43,7 @@
 			<input type = "radio"   name ="sex" value = "Male" checked>
 			<br>
 			<span class = "thin">Женский</span>
-			<input type = "radio"   name ="sex" value = "Female" >
+			<input type = "radio"   name ="sex" value = "Female">
 		</div>
 		
 		<div>
