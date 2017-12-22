@@ -19,7 +19,7 @@ Class Service
 	// Установить куки
 	public function setCookie(){
 		$string = $_POST['email'];
-		setcookie("student",$string, time() + (60*60*24*365*50) );
+		setcookie("student",$string, time() + (60*60*24*365*10) );
 	}
 	
  // Список
@@ -41,15 +41,16 @@ Class Service
 		}
 	}
 	
-	// Вывести таблицу из студентов по поиску имени/фамилии
+	// Вывести таблицу из студентов по поиску имени/фамилии/номеру группы
 	public function showQueryTable($pdo,$search){
 		// обрабатывает поиск
 		$search = $this->AddQueryForm($search);
 		
 		//подготоваливаем и возвращаем запрос
-		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student WHERE FirstName LIKE :NAMEONE OR LastName LIKE :NAMETWO limit 20");
-		$query->bindValue(':NAMEONE', $search);
-		$query->bindValue(':NAMETWO', $search);
+		$query = $pdo->prepare("SELECT FirstName, LastName, groupId, points FROM student WHERE FirstName LIKE :FN OR LastName LIKE :LN OR groupId LIKE :GI limit 20");
+		$query->bindValue(':FN', $search);
+		$query->bindValue(':LN', $search);
+		$query->bindValue(':GI', $search);
 		$query->execute();
 		return $query->fetchAll();
 	}
