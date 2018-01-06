@@ -8,16 +8,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link href="css/style.css" rel="stylesheet">
 </head>
-  
+
+
+
 <body>
 	<div class="text-center bg-dark text-white">
 		<h1>Регистрация абитуриентов</h1>
 		<h2>Заполните поле</h2>
 	</div>
-	
 	<div class ="container padding-top-10">
 		<div class ="card">
-			<div class ="card-header">Введите ваши данные</div>
+			<div class ="card-header">
+			
+			<?php if($errors): ?>
+				<?php foreach($errors as $error): ?>
+					<?php echo "<b class = text-danger>Пожалуйста, заполните поле '$error' </b><br>"?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			
+			<?php if($wrongEntries): ?>
+				<?php foreach($wrongEntries as $wrongEntrie): ?>
+					<?php echo "<b class = text-danger> $wrongEntrie </b><br>" ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			
+			</div>
 			<div class = "panel-body">
 			<form method="post">
 				<div class ="row padding-top-10">
@@ -33,21 +48,21 @@
 				
 				<div class ="row">
 					<div class ="col-md-6">
-						<input type ="text" class ="form-control" id ="FirstName" placeholder = "Имя">
+						<input type ="text" class ="form-control" id ="FirstName" name ="FirstName" placeholder = "Имя">
 					</div>
 					
 					<div class ="col-md-6">
-						<input type ="text" class ="form-control" id ="LastName" placeholder = "Фамилия">
+						<input type ="text" class ="form-control" id ="LastName" name ="LastName" placeholder = "Фамилия">
 					</div>
 				</div>			
 				
 				<div class = "padding-top-10">Пол</div>
 				<div class ="radio">
-					<label><input type="radio" name="sex"> Мужской</label>
+					<label><input type="radio" name="Sex" value="Man" > Мужской</label>
 				</div>
 					
 				<div class ="radio">
-					<label><input type="radio" name="sex"> Женский</label>
+					<label><input type="radio" name="Sex" value="Woman"> Женский</label>
 				</div>
 				
 				
@@ -63,11 +78,11 @@
 				
 				<div class ="row">
 					<div class ="col-md-6">
-						<input type ="text" class ="form-control" id ="GroupId" placeholder = "Номер группы">
+						<input type ="text" class ="form-control" id ="GroupId" name ="GroupId" placeholder = "Номер группы">
 					</div>
 					
 					<div class ="col-md-6">
-						<input class ="form-control" id ="Points" placeholder ="Количество баллов">
+						<input class ="form-control" id ="Points" name ="Points" placeholder ="Количество баллов">
 					</div>
 				</div>
 				
@@ -81,7 +96,7 @@
 				
 				<div class ="row">
 					<div class ="col-md-12">
-						<input class ="form-control" id="Year" placeholder = "Год рождения">
+						<input class ="form-control" id="Year" name ="Year" placeholder = "Год рождения">
 						</div>
 					</div>
 				</div>
@@ -97,7 +112,7 @@
 				
 				<div class ="row">
 					<div class ="col-md-2">
-						<input type = "submit" class = "btn btn-success">
+						<input type = "submit" name="Submit" class = "btn btn-success">
 					</div>
 				</div>
 				

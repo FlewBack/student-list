@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Список абитуриентов</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+		<div class="text-center bg-white">
+		<h1><a href="/list.php">Список абитуриентов</a></h1>
+		<h1> </h1>
+	</div>
+	<?php //$students = $TDG->showStudents($PDO);?>	
+	
+	<form action="list.php">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<input type="submit" class="btn btn-success" type="button" value="Найти!">
+					</span>
+					<input type="text" name="q" class="form-control" placeholder="Поиск абитуриентов">
+				</div>
+			</div>
+		</div>
+	</form>
+	  <table class="table">
+		  <thead>
+			<tr>
+		  <th scope="col">Номер</th>
+		  <th scope="col"><a href="/list.php?sorted=byfname">Имя</a></th>
+		  <th scope="col"><a href="/list.php?sorted=bysname">Фамилия</a></th>
+		  <th scope="col"><a href="/list.php?sorted=bygroupid">Номер группы</a></th>
+		  <th scope="col"><a href="list.php?sorted=bypoints">Сумма баллов</a></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<?php $columnId = 1; ?>
+			<?php foreach ($students as $student): ?>
+				<tr>
+					<th scope="row">
+						<?php echo $columnId; ?>
+					</th>
+					<td>
+						<?php echo $student['FirstName']; ?>
+					</td>
+					<td>
+						<?php echo $student['LastName']; ?>
+					</td>
+					<td>
+						<?php echo $student['groupId']; ?>
+					</td>
+					<td>
+						<?php echo $student['points']; ?>
+					</td>
+				</tr>
+			<?php $columnId++; ?>
+			<?php endforeach;?>
+		  </tbody>
+	  </table>
+</body>
+</html>
